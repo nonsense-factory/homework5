@@ -201,14 +201,14 @@ char* _preprocess(char* string, int* is_comment) {
   // Replace everything between single or double quotes with spaces
   if ((end = strpbrk(string, "\""))) {
     end++;
-    while (*end != '\"') {
+    while (end - string < BUFFERSIZE && *end != '\"') {
       *end = '\040';
       end++;
     }
   }
   if ((end = strpbrk(string, "\'"))) {
     end++;
-    while (*end != '\'') {
+    while (end - string < BUFFERSIZE && *end != '\'') {
       *end = '\040';
       end++;
     }
